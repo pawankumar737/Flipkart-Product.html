@@ -1,119 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flipkart || Product</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
-    <style>
-        .product {
-            display: grid;
-            grid-template-columns: 2fr 7fr 3fr;
-            grid-gap: 100px;
-            
-        }
-        ul{
-            margin-left: -25px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        .rating {
-            background-color: green;
-            color: white;
-            padding: 3px;
-            border-radius: 5px;
-            margin-right: 20px;
-        }
-        h2 b span:hover {
-            color: rgb(54, 7, 239);
-            cursor: pointer; /* optional, shows it's clickable */
-        }
-        .mobile{
-            margin-top: 35px;
-            margin-left: 35px;
-        }
-        
-        /* h2:hover .product-title {
-            color: black;
-        } */
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawan Kumar | Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(120deg, #0078d7, #00bcd4, #00e5ff);
+      background-size: 300% 300%;
+      animation: gradientShift 6s ease infinite;
+      color: white;
+      text-align: center;
+      padding: 4rem 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 10px #fff, 0 0 20px #00eaff, 0 0 30px #00eaff;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff, 0 0 20px #00eaff; }
+      to { text-shadow: 0 0 20px #fff, 0 0 40px #00f5ff; }
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    section {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      background: #fff;
+      margin: 2rem auto;
+      width: 90%;
+      max-width: 1100px;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #0078d7;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #00bcd4;
+      margin: 10px auto;
+      border-radius: 5px;
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .about-content img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid #00bcd4;
+      margin-bottom: 1rem;
+      transition: 0.5s;
+      box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+    }
+
+    .about-content img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 188, 212, 0.6);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .skills-list span {
+      background: linear-gradient(90deg, #0078d7, #00bcd4);
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 188, 212, 0.4);
+    }
+
+    .skills-list span:hover {
+      transform: scale(1.1);
+      background: linear-gradient(90deg, #00bcd4, #0078d7);
+    }
+
+    .project-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.9);
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      backdrop-filter: blur(5px);
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .project-card h3 {
+      color: #0078d7;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #0078d7, #00bcd4);
+      color: white;
+      padding: 0.9rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
+    }
+
+    .btn:hover {
+      background: linear-gradient(90deg, #00bcd4, #0078d7);
+      transform: scale(1.05);
+    }
+
+    #contact a {
+      color: #0078d7;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .project-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+
+    .login-page {
+      background: linear-gradient(90deg, #0078d7, #00bcd4);
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 188, 212, 0.4);
+      text-decoration: none;
+      
+
+    }
+    .project-card h3 {
+      font-size: 30px;
+    }
+    
+    .login-page:hover {
+      box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+    }
+    .Flipkart-Product {
+      background: linear-gradient(90deg, #0078d7, #00bcd4);
+      color: white;
+      padding: 0.7rem 1.4rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 188, 212, 0.4);
+      text-decoration: none;
+ 
+    }
+    .project-card h3 {
+      font-size: 30px;
+    }
+    .Flipkart-Product:hover {
+      box-shadow: 0 8px 20px rgba(0, 188, 212, 0.3);
+    }
+
+  </style>
 </head>
 <body>
-    <div class="product">
-        <div class="mobile">
-            <img src="../public/images/realme.webp" width="200" alt="realme C55">
-        </div>
-        <div>
-            <h2><b><span>Realme C55 (Rainforest, 128 GB)</span></b></h2>
-            <div>
-                 <span class="rating"> 4.4 <span class="bi bi-star-fill"></span> </span>  <span class="reviews"> <b><font color="#878787">17,000 reviews & 500 ratings</font></b></span> 
-            </div>
-            <div>
-                <ul style="color: #212121;">
-                    <li>8 GB RAM | 128 GB ROM</li>
-                    <li>17.07 cm (6.72 inch) Displa y</li>
-                    <li>50MP Rear Camera</li>
-                    <li>6000 mAh Battery</li>
-                    <li>1 Year Manufacturer Warranty for Phone and 6 Months Warranty for In the Box Accessories</li>
-                </ul>
-            </div>
-        </div>
-        <div>
-            <h1>&#8377; 13,999</h1>
-            <br>
-            <div>
-                <span> <strike>15,999</strike></span>
-                <span><font color="green">12% 0ff</font></span>
-            </div>
-            <br>
-            <div>
-                Free delivery by <b>Today</b>
-            </div>
-            <br>
-            <div>
-                <font color="green">Bank Offer</font>
-            </div>
-        </div>
+
+  <header>
+    <div class="container">
+      <h1>Pawan Kumar</h1>
+      <p>💻 Web Developer | Java Full Stack Learner</p>
     </div>
-    <hr>
-    <div class="product">
-        <div>
-            <img src="../public/images/motorola.webp" alt="MOTOROLA g05 (Forest Green, 64 GB)">
-        </div>
-        <div>
-            <h2><b><span>MOTOROLA g05 (Forest Green, 64 GB)</span></b></h2>
-            <div>
-                 <span class="rating"> 4.4 <span class="bi bi-star-fill"></span> </span>  <span class="reviews"> <b><font color="#878787">54,939 Rating & 3,624 Reviews</font></b></span> 
-            </div>
-            <div>
-                <ul style="color: #212121;">
-                    <li>4 GB RAM | 64 GB ROM | Expandable Upto 1 TB</li>
-                    <li>16.94 cm (6.67 inch) HD+ Display</li>
-                    <li>50MP Rear Camera | 8MP Front Camera</li>
-                    <li>5100 mAh Battery</li>
-                    <li>Helio G81 Processor</li>
-                    <li>1 Year Warranty on Handset and 6 Months Warranty on Accessories</li>
-                </ul>
-            </div>
-        </div>
-        <div>
-            <h1>&#8377; 6,999</h1>
-            <br>
-            <div>
-                <span> <strike>9,999</strike></span>
-                <span><font color="green">30% 0ff</font></span>
-            </div>
-            <br>
-            <div>
-               Upto <b>&#8377 6,000 </b>Off on Exchange
-            </div>
-            <br>
-            <div>
-                <font color="green">Bank Offer</font>
-            </div>
-        </div>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <img src="images/my photo.jpg" alt="Pawan Kumar" />
+      <p>Hi! I'm <strong>Pawan Kumar</strong>, a passionate developer focused on creating modern, responsive websites and Java-based applications. I love solving real-world problems with simple, clean, and efficient code.</p>
     </div>
+  </section>
+
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-list">
+      <span>HTML</span>
+      <span>CSS</span>
+      <span>JavaScript</span>
+      <span>Java (Core + Spring Boot)</span>
+      <span>MySQL</span>
+      <span>Git & GitHub</span>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-container">
+      <div class="project-card">
+        <h3>Login-page</h3>
+        <p>Login-page website built using HTML, CSS to showcase my skills and projects.</p>
+        <button class="login-page">
+          <a href=" https://pawankumar737.github.io/Login-page/" style="text-decoration: none;">Login Page</a>
+        </button>
+        
+      </div>
+
+      <div class="project-card">
+        <h3>Flipkart-Product</h3>
+        <p>Flipkart-Product website built using HTML, CSS to showcase my skills and projects.</p>
+        <button class="Flipkart-Product">
+          <a href=" https://pawankumar737.github.io/Flipkart-Product.html/" style="text-decoration: none;">Flipkart-Product</a>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <a href="docs/PAWAN_IT_Resume (1).pdf" download class="btn">Download My Resume</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>📧 Email: <a href="mailto:pankaj821304@gmail.com">pankaj821304@gmail.com</a></p>
+    <p>📞 Phone: +91 7370010835</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Pawan Kumar | All Rights Reserved</p>
+  </footer>
 </body>
 </html>
-
